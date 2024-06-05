@@ -1,38 +1,116 @@
-.App {
-  text-align: center;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    
+  
 }
+html{
+    background: black;
+    size: 100%;
+    /* font-family: "Tinos", serif; */
+    font-family: "Maven Pro", sans-serif;
+   
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+}
+body{
+    
+   
+}
+.barbing-img{
+    background-image: url(./images/img-2.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+    cursor: pointer;
+    transition: .2s ease;
+}
+.barbing-img:hover{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: grayscale(0%);
+    transition: .2s ease;
+}
+.barbing-img:hover p{
+  font-size: 60px;
+  transition: .2s ease;
+} 
+.salon-img{
+    background-image: url(./images/img-1.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+    cursor: pointer;
+    transition: .2s ease;
+}
+.salon-img:hover{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: grayscale(0%);
+    transition: .2s ease;
+}
+.salon-img:hover p{
+  font-size: 60px;
+  transition: .2s ease;
+} 
+ .home-img{
+    background-image: url(./images/img-2.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+ }
+ .home-img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.381) 50%, rgba(0, 0, 0, 0.753) 100%);
+    pointer-events: none;
+}
+.arrow-icon:hover{
+    gap: 0;
+    transition: .4s ease;
+}
+.hours-img{
+    background-image: url(./images/workinghoursimg.jpeg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.link-wrapper {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
+.blur-background{
+    backdrop-filter: blur(10px);
+
+}
+.custom-shadow{
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.231);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.shop-hover{
+  transition: .2s ease;
+}
+.shop-hover:hover{
+    background-color: #827b4597;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+
