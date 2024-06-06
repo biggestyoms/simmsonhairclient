@@ -1,2 +1,2 @@
-const baseURL = 'http://localhost:5001';
+const baseURL = 'https://simmsonhair.onrender.com';
 export default baseURL;
