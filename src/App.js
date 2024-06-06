@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import Barbing from './pages/barbing';
 import Shop from "./pages/shop"
-import Braiding from './pages/braiding';
 import Cart from './pages/cart';
 import { CartProvider } from './cartContext';
 import Login from './pages/login';
@@ -20,6 +19,8 @@ import AllProduct from './admin/allProduct';
 import AdminHome from './admin/adminHome';
 import Checkout from './pages/checkout';
 import Confirmation from './pages/confirmation';
+import Otp from './pages/otp';
+import Forgotpassword from './pages/forgotpassword';
 
 
 function App() {
@@ -34,7 +35,6 @@ function App() {
         <Route path="/" element={<Landing />}/>  
         <Route path="/barbing" element={<Barbing />}/>  
         <Route path="/shop" element={<Shop />}/>  
-        <Route path="/braiding" element={<Braiding />}/>  
         <Route path="/cart" element={<Cart />}/>  
         <Route path="/login" element={<Login />}/>  
         <Route path="/signup" element={<Signup />}/>  
@@ -44,6 +44,9 @@ function App() {
         <Route path="/admin" element={<AdminHome/>}/>
         <Route path="/checkout" element={<Checkout/>}/>
         <Route path="/confirmation" element={<Confirmation/>}/>
+        <Route path="/otp" element={<Otp/>}/>
+        <Route path="/forgot-password" element={<Forgotpassword/>}/>
+
 
 
 

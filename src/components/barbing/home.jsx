@@ -45,7 +45,7 @@ const Home = () => {
       <div className="w-full md:h-screen h-[100dvh] flex items-center justify-center relative home-img flex-col">
         <div className="flex items-center  justify-between md:hidden w-full absolute top-0 p-6">
           <Link to="/shop">
-            <h1 className="text-white text-[22px]" data-aos="fade-in">
+            <h1 className="text-white text-[19px]" data-aos="fade-in">
               SHOP
             </h1>
           </Link>

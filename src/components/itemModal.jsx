@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IoIosClose } from "react-icons/io";
 import { IoBagAddOutline } from "react-icons/io5";
 import Popup from './popup';
@@ -9,6 +10,9 @@ import axiosInstance from '../axios/axiosInstance';
 const ItemModal = ({ item, isOpen, close }) => {
   const [quantity, setQuantity] = useState(1);
   const [showPopup, setShowPopup] = useState(false);
+  const navigate = useNavigate();
+  
+  const userInfoFromStorage = JSON.parse(localStorage.getItem('userInfo')) || null;
 
   if (!isOpen) return null;
 
@@ -38,16 +42,22 @@ const ItemModal = ({ item, isOpen, close }) => {
       const response = await axiosInstance.post(`/cart`, { productId, quantity });
 
       if (response.status === 200) {
-        toast.success('Product added to cart');
+        toast.success('Product added to cart', { autoClose: 200 });
       } else {
-        toast.error('Failed to add product to cart');
+        toast.error('Failed to add product to cart', { autoClose: 300 });
       }
     } catch (error) {
-      toast.error('An error occurred. Please try again.');
+      toast.error('An error occurred. Please try again.', { autoClose: 300 });
     }
   };
 
   const handleAddToCart = () => {
+    if (!userInfoFromStorage) {
+      toast.error('You must be logged in to add items to the cart.', { autoClose: 300 });
+      navigate('/login');
+      return;
+    }
+
     if (item.inStock) {
       addToCart(item._id, quantity);
       close();

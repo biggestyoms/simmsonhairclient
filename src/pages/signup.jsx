@@ -45,16 +45,16 @@ const Signup = () => {
     if(formData.password === formData.confirmPassword){
       try {
         const response = await axios.post(`${baseUrl}/auth/register`, formData);
-        toast.success(response?.data?.message);
+        toast.success(response?.data?.message, { autoClose: 200 });
         setTimeout(() => {
           navigate("/login");
         }, 1000);
       } catch (error) {
-        toast.error("Error: " + error?.response?.data?.message);
+        toast.error("Error: " + error?.response?.data?.message, { autoClose: 200 });
       }
     }
     else{
-      toast.error("Password and confirm password don't match")
+      toast.error("Password and confirm password don't match", { autoClose: 200 })
     }
     
   };

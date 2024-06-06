@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from "../../src/images/logo.webp"
+import Logo from "../../src/images/simms.jpg"
 import { IoLogoTiktok } from "react-icons/io5";
 import { FaInstagram } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
@@ -12,16 +12,16 @@ import { Link } from 'react-router-dom';
 const Landing = () => {
   return (
     <div className='flex flex-col items-center justify-center'>
-        <Link to="/" className='w-full  flex items-center justify-center md:border-b md:border-[#ffffff90] md:pb-2 md:pt-2 pb-3 pt-3'>
-            <img src={Logo} alt="simms" className='h-20 ' />
+        <Link to="/" className='w-full  flex items-center justify-center md:border-b md:border-[#ffffff90] md:pb-4 md:pt-4 pb-6 pt-6'>
+            <img src={Logo} alt="simms" className='h-16 ' />
         </Link>
 
         <div className=' flex flex-col md:flex-row items-center md:border-l md:border-r md:border-[#ffffff90] md:w-[80%] w-full md:h-[77dvh] h-[60dvh]'>
            <Link to="/barbing" className='bg-[#ffffff50] md:w-[50%] w-full md:h-full h-[50%] flex items-center justify-center barbing-img'>
-                <p className='text-white md:text-[50px] text-[40px] absolute'>Barbershop</p>
+                <p className='text-white md:text-[50px] text-[45px] absolute'>Barbershop</p>
            </Link>
-            <Link to="/braiding" className='bg-[#ffffff20] md:w-[50%] w-full md:h-full h-[50%] flex items-center justify-center salon-img '>
-                <p className='text-white md:text-[50px] text-[40px] absolute'>Hairsalon</p>
+            <Link to="/shop" className='bg-[#ffffff20] md:w-[50%] w-full md:h-full h-[50%] flex items-center justify-center salon-img '>
+                <p className='text-white md:text-[50px] text-[45px] absolute'>Shop</p>
             </Link>
         </div>
 
@@ -37,9 +37,10 @@ const Landing = () => {
             </a>
 
             <div className='h-16 gap-5 w-full md:h-full md:w-1/4 md:border-l md:border-r flex items-center justify-center md:border-[#ffffff90]'>
-            <a href="https://www.tiktok.com/@simmsonhair?is_from_webapp=1&sender_device=pc"><IoLogoTiktok size={20} /></a>
-           <a href="https://www.instagram.com/simms_on_hair?igsh=bHVmNXpsMWhzZjF4"> <FaInstagram size={20}/></a>
-            <a href="https://www.facebook.com/share/2KVTZiHxMemJH1Fg/?mibextid=LQQJ4d"><FaFacebookF size={20} /></a>
+            <a href="https://www.tiktok.com/@simmsonhair?is_from_webapp=1&sender_device=pc"><IoLogoTiktok size={20}  /></a>
+           <a href="https://www.instagram.com/simms_on_hair?igsh=bHVmNXpsMWhzZjF4"> <FaInstagram size={20} color='
+#bb2864'/></a>
+            <a href="https://www.facebook.com/share/2KVTZiHxMemJH1Fg/?mibextid=LQQJ4d"><FaFacebookF size={20} color='#0765ff' /></a>
             </div>
         </div>
     </div>

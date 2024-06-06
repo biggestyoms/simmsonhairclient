@@ -37,12 +37,12 @@ const Login = () => {
       const { token, email, userId } = response?.data;
       localStorage.setItem("token", token);
       localStorage.setItem("userInfo",  JSON.stringify(response?.data));
-      toast.success(response?.data?.message);
+      toast.success(response?.data?.message, { autoClose: 200 });
       setTimeout(() => {
         navigate("/shop");
       }, 100);
     } catch (error) {
-      toast.error("Error: " + error?.response?.data?.message);
+      toast.error("Error: " + error?.response?.data?.message, { autoClose: 200 });
     }
   };
 

@@ -23,7 +23,7 @@ const AddProduct = () => {
     e.preventDefault();
     try {
       await axiosInstance.post(`/product/add`, formData); // Assuming your API endpoint is '/api/products/add'
-      toast.success('Product added successfully');
+      toast.success('Product added successfully', { autoClose: 200 });
       setFormData({
         name: '',
         category: '',
@@ -33,7 +33,7 @@ const AddProduct = () => {
       });
     } catch (error) {
       console.error('Error adding product:', error);
-      toast.error('Failed to add product');
+      toast.error('Failed to add product', { autoClose: 200 });
     }
   };
 

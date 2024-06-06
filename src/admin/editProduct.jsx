@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import baseUrl from '../../src/axios/baseUrl';
 
 const EditProductForm = () => {
@@ -46,10 +48,10 @@ const EditProductForm = () => {
     e.preventDefault();
     try {
       await axios.put(`${baseUrl}/product/edit/${productId}`, formData);
-      alert('Product updated successfully');
+      toast.success('Product updated successfully', { autoClose: 200 });
     } catch (error) {
       console.error('Error updating product:', error);
-      alert('Failed to update product');
+      toast.success('Failed to update product', { autoClose: 200 });
     }
   };
 

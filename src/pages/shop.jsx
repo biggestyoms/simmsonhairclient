@@ -1,9 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import ItemModal from "../components/itemModal";
 import Badge from "../components/Badge";
-
+import { SpinningCircles } from 'react-loading-icons'
 import Logo from "../images/simms.jpg";
-
 import { IoSearch } from "react-icons/io5";
 import { IoBag } from "react-icons/io5";
 import Cantu from "../images/cantutwo.png";
@@ -115,11 +114,7 @@ const Shop = () => {
         <div className="w-16 h-16 cursor-pointer flex items-center justify-center text-white">
           <IoSearch size={20} />
         </div>
-        {userLoginFromStorage?.usertype === "admin" && (
-          <Link to="/admin" className="px-4 bg-gray-500 text-white">
-            admindashboard
-          </Link>
-        )}
+
 
         <Link to="/" className="h-[9dvh] w-24">
           <img src={Logo} alt="" className="h-full md:w-full w-[120px] " />
@@ -135,6 +130,12 @@ const Shop = () => {
           )}
         </Link>
       </div>
+
+      {userLoginFromStorage?.usertype === "admin" && (
+          <Link to="/admin" className="px-4 py-2 rounded-xl bg-yellow-500 text-white">
+            admin
+          </Link>
+        )}
 
       {/* PRODUCTS */}
 
@@ -207,12 +208,12 @@ const Shop = () => {
         {/* PRODUCTS DISPLAY */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 sm:px-8 md:px-20 ">
           {loading && (
-            <div className=" absolute left-[50%] top-[50%] ">
-              <p className="text-white">Loading....</p>
+            <div className=" absolute md:left-[46%] left-[36%] top-[50%] ">
+              <p className="text-white"><SpinningCircles/></p>
             </div>
           )}
           {message && (
-            <p className="text-white absolute top-[50%] left-[50%]">
+            <p className="text-white absolute top-[50%] md:left-[46%] left-[34%]">
               {message}
             </p>
           )}
