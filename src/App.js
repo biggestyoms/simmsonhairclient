@@ -19,6 +19,7 @@ import EditProduct from './admin/editProduct';
 import AllProduct from './admin/allProduct';
 import AdminHome from './admin/adminHome';
 import Checkout from './pages/checkout';
+import Confirmation from './pages/confirmation';
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
         <Route path="/all-products" element={<AllProduct/>}/>
         <Route path="/admin" element={<AdminHome/>}/>
         <Route path="/checkout" element={<Checkout/>}/>
+        <Route path="/confirmation" element={<Confirmation/>}/>
 
 
 

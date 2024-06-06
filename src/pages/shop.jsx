@@ -121,7 +121,7 @@ const Shop = () => {
           </Link>
         )}
 
-        <Link to="/" className="h-[9dvh]">
+        <Link to="/" className="h-[9dvh] w-24">
           <img src={Logo} alt="" className="h-full md:w-full w-[120px] " />
         </Link>
 
