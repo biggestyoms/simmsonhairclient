@@ -34,12 +34,11 @@ const Login = () => {
     try {
       const response = await axios.post(`${baseUrl}/auth/login`, formData);
       console.log(response)
-      const { token, email, userId } = response?.data;
-      localStorage.setItem("token", token);
-      localStorage.setItem("userInfo",  JSON.stringify(response?.data));
       toast.success(response?.data?.message, { autoClose: 200 });
+      const { email } = response?.data;
+      localStorage.setItem("email", email);
       setTimeout(() => {
-        navigate("/shop");
+        navigate("/otp");
       }, 100);
     } catch (error) {
       toast.error("Error: " + error?.response?.data?.message, { autoClose: 200 });
@@ -51,7 +50,7 @@ const Login = () => {
       <div className='w-[40%] md:w-[16%] h-[15dvh] flex items-center justify-center md:h-[20dvh]'> 
         <img src={Logo} alt="" className='h-[10dvh] w-full' />
       </div>
-      <form onSubmit={handleSubmit} className='text-white flex flex-col items-start md:items-center pl-2 pr-2 md:pl-0 md:border border-[#ebdd79] md:w-[40%] w-[80%] h-[50dvh] gap-5'>
+      <form onSubmit={handleSubmit} className='text-white flex flex-col items-start md:items-center pl-2 pr-2 md:pl-0 md:border border-[#ebdd79] md:w-[40%] w-[80%] h-[60dvh] gap-5'>
         <p className='text-[40px] font-bold'>Sign In</p>
         <input type="text" placeholder='Enter your mail' className='bg-transparent md:w-[60%] w-full rounded-md outline-none text-white border md:h-10 h-14 border-[#ebdd79] placeholder-white p-5' name='email' value={formData.email} onChange={handleChange} />
         
@@ -75,10 +74,6 @@ const Login = () => {
         <div className='w-full flex items-center flex-col justify-center gap-2'>
           <button type='submit' className='text-black font-semibold bg-[#ebdd79] md:w-[60%] h-10 flex items-center justify-center w-full'>
             Sign In
-          </button>
-          <p>OR</p>
-          <button type='button' className='text-black font-semibold bg-[#ebdd79] md:w-[60%] w-full h-10 flex items-center justify-center'>
-            Continue With Google
           </button>
         </div>
       </form>

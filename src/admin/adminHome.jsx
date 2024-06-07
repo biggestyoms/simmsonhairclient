@@ -4,7 +4,7 @@ import { Link, Outlet } from 'react-router-dom';
 const AdminHome = () => {
   return (
     <div className="flex h-screen">
-      <div className="w-1/5 bg-gray-800 text-white p-4">
+      <div className="md:w-1/5  bg-gray-800 text-white p-4">
         <h2 className="text-2xl font-bold mb-6">Admin Dashboard</h2>
         <ul className="space-y-4">
           <li>

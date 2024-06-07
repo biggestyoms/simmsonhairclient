@@ -104,10 +104,6 @@ const Signup = () => {
           <button type='submit' className='text-black font-semibold bg-[#ebdd79] md:w-[60%] h-10 flex items-center justify-center w-full'>
             Create Account
           </button>
-          <p>OR</p>
-          <button type='button' className='text-black font-semibold bg-[#ebdd79] md:w-[60%] w-full h-10 flex items-center justify-center'>
-            Continue With Google
-          </button>
         </div>
       </form>
       <div className='flex w-full items-center justify-center'>
