@@ -70,7 +70,7 @@ const Login = () => {
           </button>
         </div>
         
-        <p className='text-white underline'>Forgot Password</p>
+        <Link to="/forgot-password"  className='text-white underline cursor-pointer'>Forgot Password</Link>
         <div className='w-full flex items-center flex-col justify-center gap-2'>
           <button type='submit' className='text-black font-semibold bg-[#ebdd79] md:w-[60%] h-10 flex items-center justify-center w-full'>
             Sign In

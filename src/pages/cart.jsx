@@ -47,7 +47,7 @@ const Cart = () => {
 
   const getTotalPrice = () => {
     return cart.reduce((total, item) => {
-      const price = item.product.price ? parseFloat(item.product.price) : 0;
+      const price = item.product.price ? parseFloat(item?.product?.price) : 0;
       return total + price * item.quantity;
     }, 0);
   };
@@ -61,7 +61,7 @@ const Cart = () => {
 
   const incrementQuantity = async (id) => {
     const updatedCart = cart.map((item) => {
-      if (item.product._id === id) {
+      if (item?.product?._id === id) {
         return { ...item, quantity: item.quantity + 1 };
       }
       return item;
@@ -183,32 +183,32 @@ const Cart = () => {
           </div>
         ) : (
           cart.map((item) => {
-            const price = item.product.price ? parseFloat(item.product.price) : 0;
+            const price = item?.product?.price ? parseFloat(item?.product?.price) : 0;
             return (
-              <div key={item.product._id} className="flex justify-between items-center w-full px-5 py-2 mb-4 text-white bg-black border border-gray-300 rounded-lg">
+              <div key={item?.product?._id} className="flex justify-between items-center w-full px-5 py-2 mb-4 text-white bg-black border border-gray-300 rounded-lg">
                 <div className="flex items-center gap-3">
-                  <button onClick={() => removeItem(item.product._id)}>
+                  <button onClick={() => removeItem(item?.product?._id)}>
                     <FaTimes color="#ebdd79" size={20} />
                   </button>
-                  <img src={item.product.image} alt={item.product.name} className="h-16 w-16 object-cover" />
+                  <img src={item?.product?.image} alt={item?.product?.name} className="h-16 w-16 object-cover" />
                 </div>
-                <p>${price.toFixed(2)}</p>
+                <p>${price?.toFixed(2)}</p>
                 <div className="flex items-center space-x-2">
                   <button
-                    onClick={() => decrementQuantity(item.product._id)}
+                    onClick={() => decrementQuantity(item?.product?._id)}
                     className="px-2 bg-gray-700 text-white rounded hover:bg-[#ebdd79] transition duration-200"
                   >
                     -
                   </button>
-                  <span>{item.quantity}</span>
+                  <span>{item?.quantity}</span>
                   <button
-                    onClick={() => incrementQuantity(item.product._id)}
+                    onClick={() => incrementQuantity(item?.product?._id)}
                     className="px-2 bg-gray-700 text-white rounded hover:bg-[#ebdd79] transition duration-200"
                   >
                     +
                   </button>
                 </div>
-                <p>${(price * item.quantity).toFixed(2)}</p>
+                <p>${(price * item?.quantity).toFixed(2)}</p>
               </div>
             );
           })

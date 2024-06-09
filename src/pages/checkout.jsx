@@ -132,9 +132,9 @@ const CheckoutPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-black p-6 text-white">
       <ToastContainer />
-      <div className="max-w-lg mx-auto bg-white p-8 rounded shadow">
+      <div className="max-w-lg mx-auto bg-black p-8 rounded shadow">
         <h1 className="text-2xl font-bold mb-6">Checkout</h1>
         <div className="mb-4">
           <h2 className="text-xl font-semibold mb-2">Cart Items</h2>
@@ -159,7 +159,7 @@ const CheckoutPage = () => {
             name="name"
             value={userInfo.name}
             onChange={handleChange}
-            className="w-full px-3 py-2 border rounded"
+            className="w-full px-3 py-2 border rounded border-[#ebdd79] bg-transparent outline-none "
           />
         </div>
         <div className="mb-4">
@@ -169,7 +169,7 @@ const CheckoutPage = () => {
             name="email"
             value={userInfo.email}
             onChange={handleChange}
-            className="w-full px-3 py-2 border rounded"
+            className="w-full px-3 py-2 border rounded border-[#ebdd79] bg-transparent outline-none"
           />
         </div>
         <div className="mb-4">
@@ -179,7 +179,7 @@ const CheckoutPage = () => {
             name="phone"
             value={userInfo.phone}
             onChange={handleChange}
-            className="w-full px-3 py-2 border rounded"
+            className="w-full px-3 py-2 border rounded border-[#ebdd79] bg-transparent outline-none"
           />
         </div>
         <div className="mb-4">
@@ -189,7 +189,7 @@ const CheckoutPage = () => {
             name="address"
             value={userInfo.address}
             onChange={handleChange}
-            className="w-full px-3 py-2 border rounded"
+            className="w-full px-3 py-2 border rounded border-[#ebdd79] bg-transparent outline-none"
           />
         </div>
         <div className="mb-4">
@@ -199,12 +199,12 @@ const CheckoutPage = () => {
             name="country"
             value={userInfo.country}
             onChange={handleChange}
-            className="w-full px-3 py-2 border rounded"
+            className="w-full px-3 py-2 border rounded border-[#ebdd79] bg-transparent outline-none"
           />
         </div>
         <div id="card-container" className="mb-4"></div>
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-[#ebdd79] text-black px-4 py-2 rounded"
           onClick={handlePayment}
         >
           Pay Now

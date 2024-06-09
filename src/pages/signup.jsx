@@ -9,9 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
-
-
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -29,7 +26,7 @@ const Signup = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    confirmPassword:"",
+    confirmPassword: "",
   });
 
   const handleChange = (e) => {
@@ -38,43 +35,58 @@ const Signup = () => {
       [e.target.name]: e.target.value,
     });
   };
-  console.log(formData.email)
+
+  const validatePassword = (password) => {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return passwordRegex.test(password);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(formData.password === formData.confirmPassword){
-      try {
-        const response = await axios.post(`${baseUrl}/auth/register`, formData);
-        toast.success(response?.data?.message, { autoClose: 200 });
-        setTimeout(() => {
-          navigate("/login");
-        }, 1000);
-      } catch (error) {
-        toast.error("Error: " + error?.response?.data?.message, { autoClose: 200 });
-      }
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Password and confirm password don't match", { autoClose: 200 });
+      return;
     }
-    else{
-      toast.error("Password and confirm password don't match", { autoClose: 200 })
+    if (!validatePassword(formData.password)) {
+      toast.error("Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character", { autoClose: 1500 });
+      return;
     }
-    
+    try {
+      const response = await axios.post(`${baseUrl}/auth/register`, formData);
+      toast.success(response?.data?.message, { autoClose: 200 });
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
+    } catch (error) {
+      toast.error("Error: " + error?.response?.data?.message, { autoClose: 200 });
+    }
   };
 
   return (
     <div className='flex w-full h-[100dvh] flex-col items-center justify-between'>
-      <div className='w-[40%] md:w-[16%] h-[15dvh] flex items-center justify-center md:h-[20dvh]'> 
+      <div className='w-[40%] md:w-[16%] h-[15dvh] flex items-center justify-center md:h-[20dvh]'>
         <img src={Logo} alt="" className='h-[10dvh] w-full' />
       </div>
 
-      <form className='text-white flex flex-col items-start md:items-center pl-2 pr-2 md:pl-0 md:border border-[#ebdd79] md:w-[40%] w-[80%] h-[60dvh] gap-5' onSubmit={handleSubmit} 
-      >
+      <form className='text-white flex flex-col items-start md:items-center pl-2 pr-2 md:pl-0 md:border border-[#ebdd79] md:w-[40%] w-[80%] h-[60dvh] gap-5' onSubmit={handleSubmit}>
         <p className='text-[40px] font-bold'>Sign up</p>
-        <input type="text" placeholder='Enter your mail address here' className='bg-transparent md:w-[60%] w-full rounded-md outline-none text-white border md:h-10 h-14 border-[#ebdd79] placeholder-white p-5' name='email' value={formData.email} onChange={handleChange} />
+        <input
+          type="text"
+          placeholder='Enter your mail address here'
+          className='bg-transparent md:w-[60%] w-full rounded-md outline-none text-white border md:h-10 h-14 border-[#ebdd79] placeholder-white p-5'
+          name='email'
+          value={formData.email}
+          onChange={handleChange}
+        />
         
         <div className='relative w-full md:w-[60%]'>
           <input
             type={showPassword ? 'text' : 'password'}
             placeholder='Password'
-            className='bg-transparent w-full rounded-md outline-none text-white border md:h-10 h-14 border-[#ebdd79] placeholder-white p-5 pr-10'  value={formData.password} onChange={handleChange} name='password'
+            className='bg-transparent w-full rounded-md outline-none text-white border md:h-10 h-14 border-[#ebdd79] placeholder-white p-5 pr-10'
+            value={formData.password}
+            onChange={handleChange}
+            name='password'
           />
           <button
             type="button"
@@ -89,7 +101,10 @@ const Signup = () => {
           <input
             type={showConfirmPassword ? 'text' : 'password'}
             placeholder='Confirm Password'
-            className='bg-transparent w-full rounded-md outline-none text-white border md:h-10 h-14 border-[#ebdd79] placeholder-white p-5 pr-10'  value={formData.confirmPassword} onChange={handleChange} name='confirmPassword'
+            className='bg-transparent w-full rounded-md outline-none text-white border md:h-10 h-14 border-[#ebdd79] placeholder-white p-5 pr-10'
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            name='confirmPassword'
           />
           <button
             type="button"
@@ -109,6 +124,7 @@ const Signup = () => {
       <div className='flex w-full items-center justify-center'>
         <p className='text-white flex gap-2'>Already have an account? <Link to="/login"><p className='text-white underline'>Sign In</p></Link></p>
       </div>
+      <ToastContainer />
     </div>
   );
 };

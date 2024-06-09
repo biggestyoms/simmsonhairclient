@@ -74,13 +74,13 @@ const ItemModal = ({ item, isOpen, close }) => {
           <IoIosClose size={35} />
         </button>
         <div className='flex items-center justify-center md:w-[40%] w-full md:h-[400px] h-[200px]'>
-          <img src={Cantu} alt={item.name} className='md:h-full h-[60%]' />
+          <img src={item?.image} alt={item?.name} className='md:h-full h-[60%]' />
         </div>
         <div className='md:w-[58%] h-[60%] w-full flex flex-col md:ml-6'>
-          <p className='font-bold text-[25px] md:mb-5'>{item.name}</p>
+          <p className='font-bold text-[25px] md:mb-5'>{item?.name}</p>
           <p className='font-semibold md:text-[20px]'>Description:</p>
-          <p className='text-[15px]'>{item.description}</p>
-          <p className="md:text-xl font-bold">Price: {formatCurrency(item.price)}</p>
+          <p className='text-[15px]'>{item?.description}</p>
+          <p className="md:text-xl font-bold">Price: {formatCurrency(item?.price)}</p>
           <div>
             <p className='mt-2'>Quantity:</p>
             <div className='w-full flex'>

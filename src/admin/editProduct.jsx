@@ -4,6 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import baseUrl from '../../src/axios/baseUrl';
+import axiosInstance from '../axios/axiosInstance';
 
 const EditProductForm = () => {
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ const EditProductForm = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/product/${productId}`);
+        const response = await axiosInstance.get(`/product/${productId}`);
         const productData = response?.data?.data; // Assuming the product data is in response.data.data
         setFormData(productData);
       } catch (error) {
@@ -47,11 +48,11 @@ const EditProductForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`${baseUrl}/product/edit/${productId}`, formData);
+      await axiosInstance.put(`/product/edit/${productId}`, formData);
       toast.success('Product updated successfully', { autoClose: 200 });
     } catch (error) {
       console.error('Error updating product:', error);
-      toast.success('Failed to update product', { autoClose: 200 });
+      toast.error('Failed to update product', { autoClose: 200 });
     }
   };
 

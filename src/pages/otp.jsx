@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import baseUrl from "../../src/axios/baseUrl";
@@ -12,9 +12,20 @@ const Otp = () => {
   ? localStorage.getItem("email")
   : undefined;
 
-  console.log(emailFromStorage)
+  const userLoginFromStorage = localStorage.getItem("userInfo")
+    ? JSON.parse(localStorage.getItem("userInfo"))
+    : undefined;
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+
+
+    // Redirect to /shop if user is already logged in
+    useEffect(() => {
+      if (userLoginFromStorage) {
+        navigate("/shop");
+      }
+    }, [userLoginFromStorage, navigate]);
+
 
   const [formData, setFormData] = useState({
     email: emailFromStorage,

@@ -20,7 +20,8 @@ import AdminHome from './admin/adminHome';
 import Checkout from './pages/checkout';
 import Confirmation from './pages/confirmation';
 import Otp from './pages/otp';
-import Forgotpassword from './pages/forgotpassword';
+import ForgotPassword from './pages/forgotPassword'
+import ResetPassword from './pages/resetPassword';
 
 
 function App() {
@@ -45,12 +46,8 @@ function App() {
         <Route path="/checkout" element={<Checkout/>}/>
         <Route path="/confirmation" element={<Confirmation/>}/>
         <Route path="/otp" element={<Otp/>}/>
-        <Route path="/forgot-password" element={<Forgotpassword/>}/>
-
-
-
-
-  
+        <Route path="/forgot-password" element={<ForgotPassword/>}/>
+        <Route path="/reset-password/:resetToken" element={<ResetPassword/>}/>
       </Routes>
     </Router>
     </CartProvider>
