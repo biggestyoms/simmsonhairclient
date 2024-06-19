@@ -19,7 +19,7 @@ const WorkingHours = () => {
         <img src={Tradingimg} alt="" className="w-[30%]" data-aos="fade-up" />
         <h1 className="text-[30px] mt-3" data-aos="fade-up"  >Trading Hours</h1>
         <p className="w-full  flex items-center justify-center text-center font-bold" data-aos="fade-up" >
-          Sunday & Monday | Closed <br /> Tuesday – Friday 9am – 6pm <br /> Saturday 9am – 5pm
+          Sunday & Monday | Closed <br /> Tuesday – Wednesday 10am – 6pm <br /> Wednesday - Saturday 9am - 7pm <br /> 
         </p>
       </div>
 

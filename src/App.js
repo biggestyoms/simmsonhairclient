@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState, useEffect } from 'react';
 import Landing from './pages/Landing';
 import {
   BrowserRouter as Router,
@@ -22,11 +23,14 @@ import Confirmation from './pages/confirmation';
 import Otp from './pages/otp';
 import ForgotPassword from './pages/forgotPassword'
 import ResetPassword from './pages/resetPassword';
+import Orders from './pages/orders';
+import AllOrders from './admin/allOrders'
 
 
 function App() {
+
+
   return (
-    
   <>
   <ToastContainer />
    <div className="body">
@@ -48,6 +52,8 @@ function App() {
         <Route path="/otp" element={<Otp/>}/>
         <Route path="/forgot-password" element={<ForgotPassword/>}/>
         <Route path="/reset-password/:resetToken" element={<ResetPassword/>}/>
+        <Route path="/orders" element={<Orders/>}/>
+        <Route path="/all-orders" element={<AllOrders/>}/>
       </Routes>
     </Router>
     </CartProvider>

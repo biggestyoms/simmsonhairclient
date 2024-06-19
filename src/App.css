@@ -110,7 +110,14 @@ body{
 .shop-hover:hover{
     background-color: #827b4597;
 }
-
-
+.popup-img{
+    background-image: url(../src/images/shopimg1.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.pop-blur{
+    backdrop-filter: blur(3px);
+}
 
 

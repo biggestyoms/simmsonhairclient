@@ -7,7 +7,7 @@ import Cantu from '../images/cantutwo.png';
 import { toast } from 'react-toastify';
 import axiosInstance from '../axios/axiosInstance';
 
-const ItemModal = ({ item, isOpen, close }) => {
+const ItemModal = ({ item, isOpen, close, fetchCart }) => {
   const [quantity, setQuantity] = useState(1);
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
@@ -43,6 +43,7 @@ const ItemModal = ({ item, isOpen, close }) => {
 
       if (response.status === 200) {
         toast.success('Product added to cart', { autoClose: 200 });
+        fetchCart(); // Fetch the cart after adding an item
       } else {
         toast.error('Failed to add product to cart', { autoClose: 300 });
       }

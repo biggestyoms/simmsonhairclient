@@ -44,7 +44,7 @@ const CheckoutPage = () => {
   useEffect(() => {
     const initializeCard = async () => {
       try {
-        const paymentsInstance = await payments('sq0idp-P55l0jNW-HrK7pEovZdzyg', 'L5K37VVVNABKY');
+        const paymentsInstance = await payments('sq0idp-coJkXBzb_7xI8fQVxnyrBQ', 'LP9G8N1R6TP68');
         const card = await paymentsInstance.card();
         await card.attach('#card-container');
         cardRef.current = card;
@@ -86,7 +86,8 @@ const CheckoutPage = () => {
             amount: getTotalPrice(),
             cartItems: cart.map(item => ({
               productId: item.product._id,
-              quantity: item.quantity
+              quantity: item.quantity,
+              name: item.product.name
             })),
             userInfo
           };
@@ -105,7 +106,8 @@ const CheckoutPage = () => {
           const orderData = {
             products: cart.map(item => ({
               productId: item.product._id,
-              quantity: item.quantity
+              quantity: item.quantity,
+              name: item.product.name
             }))
           };
 
@@ -215,3 +217,5 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
+
+
