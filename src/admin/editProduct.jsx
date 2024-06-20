@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import baseUrl from '../../src/axios/baseUrl';
 import axiosInstance from '../axios/axiosInstance';
+import { imageToBase64 } from '../axios/imagetobase64';
+
 
 const EditProductForm = () => {
   const [formData, setFormData] = useState({
@@ -37,6 +39,17 @@ const EditProductForm = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const uploadImage = async(e) =>{
+    const data = await imageToBase64(e.target.files[0])
+    // console.log(data)
+    setFormData((preve)=>{
+        return{
+            ...preve,
+            image : data
+        }
+    })
+  }
 
   const handleInStockChange = (value) => {
     setFormData({
@@ -103,17 +116,13 @@ const EditProductForm = () => {
             className="mt-1 p-2 w-full border border-gray-300 rounded-md"
           />
         </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Image URL:</label>
-          <input
-            type="text"
-            name="image"
-            value={formData.image}
-            onChange={handleChange}
-            required
-            className="mt-1 p-2 w-full border border-gray-300 rounded-md"
-          />
-        </div>
+
+        <div className='uploadImage'>
+                {
+                    formData?.image?<img src={formData?.image}/>:<span>upload</span>
+                }
+                <input type={"file"} accept = "image/*" id='image' name='image' onChange = {uploadImage}/>
+            </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">In Stock:</label>
           <input

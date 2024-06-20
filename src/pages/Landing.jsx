@@ -23,12 +23,12 @@ const Landing = () => {
 
   return (
     <div className='flex flex-col items-center justify-center'>
-      <AdvertPopup
+      {/* <AdvertPopup
         show={showModal}
         handleClose={handleCloseModal}
         message="You can now place order for products on our shopping page on this website"
         messages="And check for our summer sales."
-      />
+      /> */}
       <Link to="/" className='w-full flex items-center justify-center md:border-b md:border-[#ffffff90] md:pb-4 md:pt-4 pb-6 pt-6'>
         <img src={Logo} alt="simms" className='h-16' />
       </Link>

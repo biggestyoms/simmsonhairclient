@@ -57,7 +57,7 @@ const Orders = () => {
       <ul>
         {order.products.map((product) => (
           <li key={product?.product?._id} className="mb-4 p-4 border rounded-lg bg-gray-700">
-            <p className="text-lg font-medium">Product Name: {product?.product?.name}</p>
+            <p className="text-lg font-medium">Product Name: {product?.product?.name} </p>
             <p className="text-lg">Quantity: {product?.quantity}</p>
             <p className="text-lg">Price: ${product?.product?.price}</p>
             <p className="text-lg text-green-500">In-Store Pickup Available</p>

@@ -159,7 +159,7 @@ const Home = () => {
           </p>
           <p  data-aos="fade-right">UNISEX HAIR DESIGN & BEAUTY SUPPLIES</p>
           <p data-aos="fade-right" className="md:text-[37px] text-[34px]">
-            ESTD. 2011
+            ESTD. 2008
           </p>
          
           <a href="https://booksy.com/en-ca/7399_simms-on-hair_barbershop_713169_brantford?hl=en-CA&gei=rXFWZoVF862m1A-D_Z_IAw&rwg_token=AJKvS9UxsU1eRN-LEnJnlwe45GhYDXInq5LWSxgefxxSpWx2XU0gfwL6TvtlMDkrVy6kD87ym_wB5VzI5_-DROxFN2KVFaF1fg%3D%3D#ba_s=seo">

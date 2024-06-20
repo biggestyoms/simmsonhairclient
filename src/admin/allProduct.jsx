@@ -6,18 +6,26 @@ import axiosInstance from '../axios/axiosInstance';
 
 const AllProduct = () => {
   const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const limit = 10; // Number of products per page
+
+  const fetchProducts = async (page = 1) => {
+    try {
+      const response = await axios.get(`${baseURL}/product/all`, {
+        params: { page, limit }
+      });
+      setProducts(response.data.data);
+      setCurrentPage(page);
+      setTotalPages(response.data.totalPages);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get(`${baseURL}/product/all`);
-        setProducts(response.data.data);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
-    fetchProducts();
-  }, []);
+    fetchProducts(currentPage);
+  }, [currentPage]);
 
   const handleDelete = async (productId) => {
     try {
@@ -32,10 +40,16 @@ const AllProduct = () => {
     }
   };
 
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      fetchProducts(newPage);
+    }
+  };
+
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4 text-white">Products</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid h-[85dvh] overflow-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map(product => (
           <div key={product?._id} className="bg-gray-800 p-4 rounded-lg shadow-md">
             <h3 className="text-xl font-semibold text-white">{product?.name}</h3>
@@ -53,6 +67,33 @@ const AllProduct = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="flex justify-center mt-4">
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className="w-20 py-1 mr-2 bg-[#ebdd79] text-black rounded-[50px]"
+        >
+          Previous
+        </button>
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index}
+            onClick={() => handlePageChange(index + 1)}
+            className={`px-3 py-1 mr-2 bg-[#ebdd79] text-black rounded-[50px] ${
+              currentPage === index + 1 && 'bg-yellow-500'
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
+        <button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className="w-20 py-1 ml-2 bg-[#ebdd79] text-black rounded-[50px]"
+        >
+          Next
+        </button>
       </div>
     </div>
   );
